@@ -3,9 +3,6 @@ from flask import Flask, request, redirect, render_template_string, session, url
 from flask_socketio import SocketIO, emit, join_room, leave_room
 import sqlite3, os
 from datetime import datetime
-import eventlet
-import gevent
-eventlet.monkey_patch()
 
 
 # ---------- Config ----------
@@ -395,5 +392,6 @@ button.red { background:#ef4444; }
 if __name__=="__main__":
     init_db()
     socketio.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=True)
+
 
 
