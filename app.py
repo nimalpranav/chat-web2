@@ -14,7 +14,7 @@ MOD_PASSWORD = "mod123"
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "dev-key")
-socketio = SocketIO(app, cors_allowed_origins="*")
+socketio = SocketIO(app, cors_allowed_origins="*", async_mode="threading")
 
 # ---------- Data Stores ----------
 roles = {}             # username -> role
@@ -392,6 +392,7 @@ button.red { background:#ef4444; }
 if __name__=="__main__":
     init_db()
     socketio.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=True)
+
 
 
 
